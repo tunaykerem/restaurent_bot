@@ -6,22 +6,22 @@
 //#include <json/value.h>
 #include <fstream>
 using json = nlohmann::json;
-using Handler = std::function<void(const json_t&)>;
+using Handler = std::function<void(const json&)>;
+using namespace Restaurant_Bot;
+Menu menu;
 std::vector<Handler> handlers = {
-    [&](const json_t& el){ Starter tmp; tmp.from_json(el); menu.starters.push_back(std::move(tmp)); },
-    [&](const json_t& el){ Salad tmp; tmp.from_json(el); menu.salads.push_back(std::move(tmp)); },
-    [&](const json_t& el){ MainCourse tmp; tmp.from_json(el); menu.mainCourses.push_back(std::move(tmp)); },
-    [&](const json_t& el){ Drink tmp; tmp.from_json(el); menu.drinks.push_back(std::move(tmp)); },
-    [&](const json_t& el){ Appetizer tmp; tmp.from_json(el); menu.appetizers.push_back(std::move(tmp)); },
-    [&](const json_t& el){ Dessert tmp; tmp.from_json(el); menu.desserts.push_back(std::move(tmp)); }
+    [](const json& el){ Starter tmp; tmp.from_json(el); menu.starters.push_back(tmp); },
+    [](const json& el){ Salad tmp; tmp.from_json(el); menu.salads.push_back(tmp); },
+    [](const json& el){ MainCourse tmp; tmp.from_json(el); menu.mainCourses.push_back(tmp); },
+    [](const json& el){ Drink tmp; tmp.from_json(el); menu.drinks.push_back(tmp); },
+    [](const json& el){ Appetizer tmp; tmp.from_json(el); menu.appetizers.push_back(tmp); },
+    [](const json& el){ Dessert tmp; tmp.from_json(el); menu.desserts.push_back(tmp); }
 };
 // Example usage of the Restaurant_Bot namespace in ana.cpp
 int main(){
-	using namespace Restaurant_Bot;
+	
 
-	Menu menu;
-
-	Starter s;
+	
 
     std::ifstream menu_file("menu.json");
 

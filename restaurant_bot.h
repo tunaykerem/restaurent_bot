@@ -27,11 +27,11 @@ struct MenuItem {
     void from_json(const json& j){
         name = j["name"];
         price = j["price"];
-        taste.sweet = j["taste"]["sweet"];
-        taste.sour = j["taste"]["sour"];
-        taste.bitter = j["taste"]["bitter"];
-        taste.salty = j["taste"]["salty"];
-        taste.savory = j["taste"]["savory"];
+        taste.sweet = j["taste_balance"]["sweet"];
+        taste.sour = j["taste_balance"]["sour"];
+        taste.bitter = j["taste_balance"]["bitter"];
+        taste.salty = j["taste_balance"]["salty"];
+        taste.savory = j["taste_balance"]["savory"];
     }
 };
 
