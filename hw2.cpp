@@ -1,5 +1,9 @@
 #include <bits/stdc++.h>
 //using namespace std;
+#include <nlohmann/json.hpp>
+#include <json/value.h>
+#include <fstream>
+using json = nlohmann::json;
 namespace Restaurant_Bot{
     class taste_balance{
         public:
@@ -14,6 +18,7 @@ namespace Restaurant_Bot{
             std :: string name;
             int price;
             taste_balance taste;
+            
     };
     class Starter : public MenuItem {
         public:
@@ -35,8 +40,6 @@ namespace Restaurant_Bot{
             float alcohol_cost=2.5;
             float carbonation_cost=0.5;
     };
-
-
     class Appetizer : public MenuItem {
         public:
             bool after_main_course;
@@ -45,16 +48,6 @@ namespace Restaurant_Bot{
         public:
             bool chocolate;
             float chocolate_cost=1.5;
-    };
-    class Menu{
-        public:
-            std :: vector<Starter>  starters;
-            std :: vector<Appetizer> appetizers;
-            std :: vector<MainCourse> mainCourses;
-            std :: vector<Drink> drinks;
-            std :: vector<Dessert> desserts;
-
-
     };
     class User{
         public:
