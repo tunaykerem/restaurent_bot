@@ -40,17 +40,17 @@ struct Starter : public MenuItem {
 };
 
 struct Salad : public MenuItem {
-    bool toppings{};
+    bool toppings{false};
     float topping_cost = 2.25f;
 };
 
 struct MainCourse : public MenuItem {
-    bool vegetarian{};
+    bool vegetarian{false};
 };
 
 struct Drink : public MenuItem {
-    bool alcoholic{};
-    bool carbonated{};
+    bool alcoholic{false};
+    bool carbonated{false};
     float alcohol_cost = 2.5f;
     float carbonation_cost = 0.5f;
 };
@@ -60,7 +60,7 @@ struct Appetizer : public MenuItem {
 };
 
 struct Dessert : public MenuItem {
-    bool chocolate{};
+    bool chocolate{false};
     float chocolate_cost = 1.5f;
 };
 

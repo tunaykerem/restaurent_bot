@@ -8,14 +8,21 @@
 using json = nlohmann::json;
 using Handler = std::function<void(const json&)>;
 using namespace Restaurant_Bot;
+
+// menu yu global yaptım ki handler lar erişebilsin
+// menu degiskenini atadim
+// her bir handler icerisinde tmp objesi olusturup from_json ile doldurup menu ya ekliyorum
+// her bir tur icin kendi handler fonksiyonunu yazdim
+// sirayla atayabilsin diye vectrore atadim
 Menu menu;
 std::vector<Handler> handlers = {
-    [](const json& el){ Starter tmp; tmp.from_json(el); menu.starters.push_back(tmp); },
-    [](const json& el){ Salad tmp; tmp.from_json(el); menu.salads.push_back(tmp); },
-    [](const json& el){ MainCourse tmp; tmp.from_json(el); menu.mainCourses.push_back(tmp); },
-    [](const json& el){ Drink tmp; tmp.from_json(el); menu.drinks.push_back(tmp); },
     [](const json& el){ Appetizer tmp; tmp.from_json(el); menu.appetizers.push_back(tmp); },
-    [](const json& el){ Dessert tmp; tmp.from_json(el); menu.desserts.push_back(tmp); }
+    [](const json& el){ Dessert tmp; tmp.from_json(el); menu.desserts.push_back(tmp); },
+    [](const json& el){ Drink tmp; tmp.from_json(el); menu.drinks.push_back(tmp); },
+    [](const json& el){ MainCourse tmp; tmp.from_json(el); menu.mainCourses.push_back(tmp); },
+    [](const json& el){ Salad tmp; tmp.from_json(el); menu.salads.push_back(tmp); },
+    [](const json& el){ Starter tmp; tmp.from_json(el); menu.starters.push_back(tmp); }
+
 };
 // Example usage of the Restaurant_Bot namespace in ana.cpp
 int main(){
@@ -35,5 +42,5 @@ int main(){
         }
         hangi++;
     }
-    std::cout << menu_data;
+    
 }
